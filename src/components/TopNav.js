@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+// TODO: add name and avatar
+// TODO: add Logout button
+
 export default function TopNav() {
 	return (
 		<nav className="top-nav">
