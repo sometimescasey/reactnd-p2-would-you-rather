@@ -13,4 +13,5 @@ class Leaderboard extends Component {
  	}
 }
 
-export default connect()(Leaderboard);
+export default Leaderboard;
+// export default connect()(Leaderboard);

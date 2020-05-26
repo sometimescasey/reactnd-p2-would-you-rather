@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 
 class NewQuestion extends Component {
  	render() {
- 		return ();
+ 		return (
+ 			<div>
+ 				New Question
+ 			</div>
+ 			);
  	}
 }
 
-export default connect()(NewQuestion);
+export default NewQuestion;
+// export default connect()(NewQuestion);
