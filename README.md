@@ -1,3 +1,6 @@
+# Project 2: Would You Rather (Udacity React ND)
+This is the "Would You Rather" game from the second part of the Udacity React Nanodegree, **"4. React & Redux"**.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
