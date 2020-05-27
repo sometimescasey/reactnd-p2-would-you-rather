@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
-import './App.css';
 import { handleInitialData } from '../actions/shared';
 import TopNav from './TopNav';
 import Home from './Home';

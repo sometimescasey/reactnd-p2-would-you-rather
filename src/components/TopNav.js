@@ -9,17 +9,17 @@ export default function TopNav() {
 		<nav className="top-nav">
 			<ul>
 				<li>
-					<NavLink to="/" exact activeClassName='active'>
+					<NavLink to="/" exact activeClassName='top-link-active' className="top-link">
 						Home
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/new-question" exact activeClassName='active'>
+					<NavLink to="/new-question" activeClassName='top-link-active' className="top-link">
 						New Question
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/leaderboard" exact activeClassName='active'>
+					<NavLink to="/leaderboard" activeClassName='top-link-active' className="top-link">
 						Leaderboard
 					</NavLink>
 				</li>

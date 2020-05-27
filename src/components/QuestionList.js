@@ -7,8 +7,8 @@ class QuestionList extends Component {
 		const { questionIds } = this.props;
 		console.log("questionIds: ", questionIds);
 		return (
-			<div>
-				{questionIds.map((qid) => (qid))}
+			<div className="question-list">
+				{questionIds.map((qid) => (<Question qid={qid}/>))}
 			</div>
 			);
 	}
