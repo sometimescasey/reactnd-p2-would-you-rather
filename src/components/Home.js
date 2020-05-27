@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
+import QuestionList from './QuestionList';
 
 class Home extends Component {
  	render() {
@@ -8,6 +9,7 @@ class Home extends Component {
  				Home
  				{/* TODO: Answered vs Unanswered */}
  				{/*	STATE: Display list of answered vs unanswered qs */}
+ 				<QuestionList/>
  			</div>
  			);
  	}

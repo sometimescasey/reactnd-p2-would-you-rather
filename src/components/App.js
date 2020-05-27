@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 import './App.css';
+import { handleInitialData } from '../actions/shared';
 import TopNav from './TopNav';
 import Home from './Home';
 import NewQuestion from './NewQuestion';
@@ -17,6 +18,11 @@ import Leaderboard from './Leaderboard';
 // TODO: after login, redirect to Home per rubric
 
 class App extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(handleInitialData());
+  }
+
   render() {
     return (
       <Router>
@@ -37,5 +43,4 @@ class App extends Component {
 
 }
 
-export default App;
-// export default connect()(App);
+export default connect()(App);
