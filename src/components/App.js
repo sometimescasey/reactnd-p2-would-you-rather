@@ -7,6 +7,7 @@ import TopNav from './TopNav';
 import Home from './Home';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
+import QuestionPage from './QuestionPage';
 
 // TODO: all these components
 // should be behind a Login screen
@@ -33,6 +34,7 @@ class App extends Component {
                   <Route path='/' exact component={Home} />
                   <Route path='/new-question' component={NewQuestion} />
                   <Route path='/leaderboard' component={Leaderboard} />
+                  <Route path='/questions/:question_id' component={QuestionPage} />
             </div>
           </div>
           </Fragment>

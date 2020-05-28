@@ -10,6 +10,8 @@ State shape:
 {
 	authedUser: "sarah_edo"
 	loadingBar: <some loading bar object here>
+	users: <object of user objects by uid>
+	questions: <object of question objects by qid>
 }
 */
 

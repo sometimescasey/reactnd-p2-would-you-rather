@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .App {
   text-align: center;
 }
@@ -38,14 +43,29 @@ code {
 
 }
 
+.home-switch {
+
+}
+
+.home-switch button {
+  font-size: 100%;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  cursor: pointer;
+}
+
 .leaderboard {
+}
+
+.question-wrapper {
+    margin: 1em;
 }
 
 .question {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 1em;
-  margin: 1em;
 }
 
 .question-list {
@@ -62,6 +82,7 @@ code {
 	padding-bottom: 10px;
 }
 
+.home-switch ul,
 .top-nav ul {
 	list-style-type: none;
 	  margin: 0;
@@ -69,20 +90,28 @@ code {
 	  overflow: hidden;
 }
 
+.home-switch li,
 .top-nav li {
 	float: left;
   	padding: 16px;
 }
 
+.home-switch-link,
 .top-link {
 	color: black;
 	text-decoration: none;
 }
 
+.home-switch-link-active,
 .top-link-active {
 	color: red;
 }
 
 .user-name {
-  color: blue;
+  color: #1F2BA6;
+  font-weight: bold;
+}
+
+.your-answer {
+  font-weight: bold;
 }
