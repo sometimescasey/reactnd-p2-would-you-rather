@@ -1,13 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
 import TopNav from './TopNav';
-import Home from './Home';
-import NewQuestion from './NewQuestion';
-import Leaderboard from './Leaderboard';
-import QuestionPage from './QuestionPage';
+import LoggedInRoutes from './LoggedInRoutes';
 
 // TODO: all these components
 // should be behind a Login screen
@@ -24,18 +21,18 @@ class App extends Component {
   }
 
   render() {
+    const { authedUser } = this.props;
+
     return (
       <Router>
         <Fragment>
         <LoadingBar />
           <div className="App">
             <TopNav/>
-            <div>
-                  <Route path='/' exact component={Home} />
-                  <Route path='/new-question' component={NewQuestion} />
-                  <Route path='/leaderboard' component={Leaderboard} />
-                  <Route path='/questions/:question_id' component={QuestionPage} />
-            </div>
+            { authedUser && (
+                <LoggedInRoutes/>
+              )}
+
           </div>
           </Fragment>
       </Router>
@@ -44,4 +41,10 @@ class App extends Component {
 
 }
 
-export default connect()(App);
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  };
+}
+
+export default connect(mapStateToProps)(App);

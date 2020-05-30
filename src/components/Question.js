@@ -10,7 +10,7 @@ class Question extends Component {
 			<div className="question-wrapper">
 				<Link to={`/questions/${question.id}`} className='question-link'>
 					<div className="question">
-						<div className="user-name">
+						<div className="question-user-name">
 							{user.name}
 						</div>
 						<div className="option" id="option-1">
