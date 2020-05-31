@@ -6,12 +6,6 @@ import VoteInfo from './VoteInfo';
 
 class OptionCards extends Component {
 
-	getVoteCount = () => {
-		const { question } = this.props;
-		return (question.optionOne.votes.length
-			+ question.optionTwo.votes.length);
-	};
-
 	isUserChoice = (questionOption, authedUser) => {
 		return questionOption.votes.includes(authedUser);
 	};
@@ -29,12 +23,12 @@ class OptionCards extends Component {
 		const {
 			question,
 			authedUser,
-			handleVote } = this.props;
+			handleVote,
+			totalVoteCount } = this.props;
 
 		console.log("OptionCards this.props: ", this.props);
 
 		if (question && authedUser) {
-			const totalVoteCount = this.getVoteCount();
 			const qo1 = question.optionOne;
 			const qo2 = question.optionTwo;
 			const userAnswered = this.userAnswered(qo1, qo2, authedUser);
@@ -101,9 +95,12 @@ function mapStateToProps({ questions, users, authedUser }, props) {
 	const { question_id } = props;
 	const question = questions[question_id];
 	const asker = users[question.author];
+	const totalVoteCount = (question.optionOne.votes.length
+			+ question.optionTwo.votes.length);
 	return {
 		question,
 		authedUser,
+		totalVoteCount,
 	};
 }
 
