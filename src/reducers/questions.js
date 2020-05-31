@@ -24,7 +24,7 @@ export default function questions(state={}, action) {
 
 function process_vote_question(state, action) {
 	if (action.type !== VOTE_QUESTION) {
-		return {};
+		throw "process_vote_question() called on non VOTE_QUESTION action. This is a non-intended use of this function."
 	} else {
 		let question = state[action.question_id];
 		if (action.voted_one) {

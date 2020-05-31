@@ -14,6 +14,7 @@ class QuestionPage extends Component {
 			votedOne,
 			authedUser
 			));
+		this.forceUpdate(); // TODO hack; fix; also does not work
 	};
 
 	render () {
