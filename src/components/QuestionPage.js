@@ -4,16 +4,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OptionCards from './OptionCards';
-import { voteQuestion } from '../actions/questions';
+import { handleVote } from '../actions/shared';
 
 class QuestionPage extends Component {
 	handleVote = (votedOne) => {
 		const { question_id, authedUser, dispatch } = this.props;
-		dispatch(voteQuestion(
-			question_id,
-			votedOne,
-			authedUser
-			));
+		const answer = votedOne ? "optionOne" : "optionTwo";
+		dispatch(handleVote(authedUser, question_id, answer));
 	};
 
 	render () {

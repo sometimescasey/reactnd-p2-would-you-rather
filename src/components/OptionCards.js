@@ -5,6 +5,9 @@ import VoteInfo from './VoteInfo';
 // TODOs: tiny avatars of the people who voted for it!
 
 class OptionCards extends Component {
+	state = {
+		voteButtonsDisabled: false
+	};
 
 	isUserChoice = (questionOption, authedUser) => {
 		return questionOption.votes.includes(authedUser);
@@ -52,7 +55,13 @@ class OptionCards extends Component {
 										/>
 									)
 									: (
-										<button onClick={() => {handleVote(true)}}>
+										<button
+										onClick={() => {
+											handleVote(true);
+											this.setState({voteButtonsDisabled: true});
+											}}
+										disabled={this.state.voteButtonsDisabled}
+										>
 											Vote Option One
 										</button>
 									)
@@ -73,7 +82,13 @@ class OptionCards extends Component {
 								totalVoteCount={totalVoteCount}
 							/>
 								) : (
-							<button onClick={() => {handleVote(false)}}>
+							<button
+							onClick={() => {
+								handleVote(false);
+								this.setState({voteButtonsDisabled: true});
+							}}
+							disabled={this.state.voteButtonsDisabled}
+							>
 									Vote Option Two
 								</button>
 								)
@@ -94,7 +109,6 @@ class OptionCards extends Component {
 function mapStateToProps({ questions, users, authedUser }, props) {
 	const { question_id } = props;
 	const question = questions[question_id];
-	const asker = users[question.author];
 	const totalVoteCount = (question.optionOne.votes.length
 			+ question.optionTwo.votes.length);
 	return {

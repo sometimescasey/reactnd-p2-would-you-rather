@@ -30,7 +30,7 @@ class App extends Component {
           <div className="App">
             <TopNav/>
             { authedUser && (
-                <LoggedInRoutes/>
+                  <LoggedInRoutes/>
               )}
 
           </div>

@@ -25,6 +25,11 @@ a {
   color: #61dafb;
 }
 
+.logged-in-routes {
+  width: 90%;
+  display: inline-block;
+}
+
 .home {
 	display: flex;
   flex-direction: column;
@@ -152,4 +157,29 @@ a {
 
 .asker-name {
   margin-top: 10px;
+}
+
+/* New question */
+
+.new-question {
+  align-items: center;
+}
+
+.new-question-form {
+
+}
+
+.new-question-option-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.new-question-button,
+.new-question-option {
+  border: 1px solid #ccc;
+  border-radius: 10em;
+  font-size: 100%;
+  margin: 10px;
+  padding: 10px;
 }

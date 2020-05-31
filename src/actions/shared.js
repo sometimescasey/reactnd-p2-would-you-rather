@@ -1,8 +1,12 @@
 import { showLoading, hideLoading } from 'react-redux-loading';
 import { getInitialData } from '../utils/api';
-import { receiveUsers } from './users';
-import { receiveQuestions } from './questions';
+import { receiveUsers, voteUser } from './users';
+import { receiveQuestions, voteQuestion } from './questions';
 import { setAuthedUser } from './authedUser';
+
+import {
+	_saveQuestionAnswer,
+	_saveQuestion } from '../utils/_DATA';
 
 /* NOTES */
 // need API call to get data, Promise.then() ->
@@ -26,5 +30,24 @@ export function handleInitialData() {
 			dispatch(hideLoading());
 			})
 		.catch();
+	}
+}
+
+export function handleVote(authedUser, qid, answer) {
+	const voteObject = { authedUser, qid, answer };
+	return (dispatch, getState) => {
+		const { users } = getState();
+		if (Object.keys(users[authedUser].answers).includes(qid)) {
+			console.log("User has already voted in this poll.")
+		} else {
+			dispatch(showLoading());
+			return _saveQuestionAnswer(voteObject)
+			.then(({ users, questions }) => {
+				dispatch(voteUser(users));
+				dispatch(voteQuestion(questions));
+				dispatch(hideLoading());
+			})
+			.catch();
+		}
 	}
 }
