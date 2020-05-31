@@ -23,7 +23,7 @@ class TopNav extends Component {
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/new-question" activeClassName='top-link-active' className="top-link">
+							<NavLink to="/add" activeClassName='top-link-active' className="top-link">
 								New Question
 							</NavLink>
 						</li>

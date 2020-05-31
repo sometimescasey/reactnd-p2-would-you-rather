@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleNewQuestion } from '../actions/shared';
 
-// handleNewQuestion(optionOneText, optionTwoText, author)
-
 class NewQuestion extends Component {
 	state = {
 		optionOne: '',
 		optionTwo: '',
+		submitDisabled: false,
 	};
 
 	handleChange = (e, boxOne) => {
@@ -24,14 +23,20 @@ class NewQuestion extends Component {
 		dispatch(handleNewQuestion(
 			this.state.optionOne,
 			this.state.optionTwo,
-			authedUser));
+			authedUser))
+		.then(() => {
+			this.props.history.push('/');
+		} );
 	};
 
  	render() {
+
  		return (
  			<div className="new-question">
  				New Question
  				<h1>Would you rather...</h1>
+ 				{ /* Note - LastPass noise when hitting Enter:
+ 				https://github.com/KillerCodeMonkey/ngx-quill/issues/351 */ }
  				<form className="new-question-form">
  					<div className = "new-question-option-list">
 	 				<input
@@ -47,7 +52,12 @@ class NewQuestion extends Component {
 	 				</div>
  				<button
  					className="new-question-button"
- 					onClick={this.handleSubmit}
+ 					type="submit"
+ 					disabled={this.state.submitDisabled}
+ 					onClick={(e) => {
+ 						this.setState({submitDisabled: true});
+ 						this.handleSubmit(e);
+ 					}}
  					>Submit</button>
  				</form>
  			</div>

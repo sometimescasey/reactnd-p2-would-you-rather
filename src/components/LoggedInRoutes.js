@@ -9,7 +9,7 @@ export default function LoggedInRoutes(props) {
 	return (
 		<div className="logged-in-routes">
           <Route path='/' exact component={Home} />
-          <Route path='/new-question' component={NewQuestion} />
+          <Route path='/add' component={NewQuestion} />
           <Route path='/leaderboard' component={Leaderboard} />
           <Route path='/questions/:question_id' component={QuestionPage} />
          </div>
