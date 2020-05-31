@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import VoteInfo from './VoteInfo';
 
 // TODOs: tiny avatars of the people who voted for it!
 
-export default class OptionCards extends Component {
+class OptionCards extends Component {
 
 	getVoteCount = () => {
 		const { question } = this.props;
@@ -27,13 +28,17 @@ export default class OptionCards extends Component {
 	render() {
 		const {
 			question,
-			authedUser } = this.props;
+			authedUser,
+			handleVote } = this.props;
+
+		console.log("OptionCards this.props: ", this.props);
 
 		if (question && authedUser) {
 			const totalVoteCount = this.getVoteCount();
 			const qo1 = question.optionOne;
 			const qo2 = question.optionTwo;
 			const userAnswered = this.userAnswered(qo1, qo2, authedUser);
+			console.log("userAnswered: ", userAnswered);
 
 			let optionCards = (
 				<div className="question-page-option-list">
@@ -45,12 +50,19 @@ export default class OptionCards extends Component {
 									? <div style={{fontWeight: 'bold'}}>(Your choice)</div>
 									: <div></div> }
 								</div>
-								{ userAnswered && (
-									<VoteInfo
-									questionOption={qo1}
-									totalVoteCount={totalVoteCount}
-								/>
-									)}
+								{ userAnswered
+									? (
+										<VoteInfo
+										questionOption={qo1}
+										totalVoteCount={totalVoteCount}
+										/>
+									)
+									: (
+										<button onClick={() => {handleVote(true)}}>
+											Vote Option One
+										</button>
+									)
+								}
 						</div>
 					</div>
 					<div className="question-page-option-wrapper">
@@ -61,12 +73,17 @@ export default class OptionCards extends Component {
 								? <div style={{fontWeight: 'bold'}}>(Your choice)</div>
 								: <div></div> }
 							</div>
-							{ userAnswered && (
+							{ userAnswered ? (
 								<VoteInfo
 								questionOption={qo2}
 								totalVoteCount={totalVoteCount}
 							/>
-								)}
+								) : (
+							<button onClick={() => {handleVote(false)}}>
+									Vote Option Two
+								</button>
+								)
+							}
 						</div>
 					</div>
 				</div>
@@ -79,3 +96,15 @@ export default class OptionCards extends Component {
 
 	}
 };
+
+function mapStateToProps({ questions, users, authedUser }, props) {
+	const { question_id } = props;
+	const question = questions[question_id];
+	const asker = users[question.author];
+	return {
+		question,
+		authedUser,
+	};
+}
+
+export default connect(mapStateToProps)(OptionCards);

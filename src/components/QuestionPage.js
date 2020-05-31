@@ -4,16 +4,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OptionCards from './OptionCards';
+import { voteQuestion } from '../actions/questions';
 
 class QuestionPage extends Component {
+	handleVote = (votedOne) => {
+		const { question_id, authedUser, dispatch } = this.props;
+		dispatch(voteQuestion(
+			question_id,
+			votedOne,
+			authedUser
+			));
+	};
 
 	render () {
-		const { question, asker, authedUser, } = this.props;
+		const { question_id, asker } = this.props;
 
 		// handle the odd case that someone is logged in
 		// but goes directly to a question page and not through "/":
 		// do not render until "question" is defined
-		return (question && asker)
+		return (question_id && asker)
 		? (
 
 				<div className="question-page">
@@ -28,8 +37,8 @@ class QuestionPage extends Component {
 
 					<h1>Would you rather...</h1>
 						<OptionCards
-							question={question}
-							authedUser={authedUser}
+							question_id={question_id}
+							handleVote={this.handleVote}
 						/>
 				</div>
 		)
@@ -48,9 +57,9 @@ function mapStateToProps({ questions, users, authedUser }, props) {
 		const question = questions[question_id];
 		const asker = users[question.author];
 		return {
-			question,
-			authedUser,
+			question_id,
 			asker,
+			authedUser,
 		};
 	} else {
 		return {};
