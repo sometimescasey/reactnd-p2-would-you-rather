@@ -1,7 +1,7 @@
 import { showLoading, hideLoading } from 'react-redux-loading';
 import { getInitialData } from '../utils/api';
-import { receiveUsers, voteUser } from './users';
-import { receiveQuestions, voteQuestion } from './questions';
+import { receiveUsers, voteUser, nqUser } from './users';
+import { receiveQuestions, voteQuestion, nqQuestion } from './questions';
 import { setAuthedUser } from './authedUser';
 
 import {
@@ -49,5 +49,19 @@ export function handleVote(authedUser, qid, answer) {
 			})
 			.catch();
 		}
+	}
+}
+
+export function handleNewQuestion(optionOneText, optionTwoText, author) {
+	const newQuestionObject = { optionOneText, optionTwoText, author };
+	return (dispatch) => {
+		dispatch(showLoading());
+		return _saveQuestion(newQuestionObject)
+		.then(({ users, questions }) => {
+			dispatch(nqUser(users));
+			dispatch(nqQuestion(questions));
+			dispatch(hideLoading());
+		})
+		.catch();
 	}
 }

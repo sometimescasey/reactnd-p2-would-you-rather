@@ -166,7 +166,7 @@ export function _saveQuestion (question) {
         }
       }
 
-      res(formattedQuestion)
+      res({ users, questions }) // NOTE: changed
     }, 1000)
   })
 }
@@ -196,7 +196,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
         }
       }
 
-      res({users, questions}) // my change
+      res({users, questions}) // NOTE: changed
     }, 500)
   })
 }

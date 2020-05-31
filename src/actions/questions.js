@@ -1,6 +1,6 @@
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const VOTE_QUESTION = "VOTE_QUESTION";
-export const ADD_QUESTION = "ADD_QUESTION";
+export const NEW_QUESTION = "NEW_QUESTION";
 
 /* ACTION CREATOR */
 export function receiveQuestions(questions) {
@@ -21,11 +21,11 @@ export function voteQuestion(questions) {
 	);
 }
 
-export function addQuestion(authedUser, new_question) {
+export function nqQuestion(questions) {
 	return (
 		{
-			type: addQuestion,
-			new_question,
+			type: NEW_QUESTION,
+			questions,
 		}
 	);
 }

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { handleNewQuestion } from '../actions/shared';
+
+// handleNewQuestion(optionOneText, optionTwoText, author)
 
 class NewQuestion extends Component {
 	state = {
@@ -14,8 +17,14 @@ class NewQuestion extends Component {
 	};
 
 	handleSubmit = (e) => {
+		const { dispatch, authedUser } = this.props;
+
 		e.preventDefault();
 		console.log(this.state);
+		dispatch(handleNewQuestion(
+			this.state.optionOne,
+			this.state.optionTwo,
+			authedUser));
 	};
 
  	render() {
@@ -46,4 +55,10 @@ class NewQuestion extends Component {
  	}
 }
 
-export default connect()(NewQuestion);
+function mapStateToProps({ authedUser }) {
+	return {
+		authedUser,
+	};
+}
+
+export default connect(mapStateToProps)(NewQuestion);

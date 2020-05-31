@@ -1,6 +1,7 @@
 import {
 	RECEIVE_QUESTIONS,
-	VOTE_QUESTION } from '../actions/questions';
+	VOTE_QUESTION,
+	NEW_QUESTION } from '../actions/questions';
 
 // this only handles the "questions" slice of state
 // not the whole state!
@@ -9,6 +10,7 @@ export default function questions(state={}, action) {
 	switch (action.type) {
 		case RECEIVE_QUESTIONS:
 		case VOTE_QUESTION:
+		case NEW_QUESTION:
 			return {
 				...state,
 				...action.questions,
