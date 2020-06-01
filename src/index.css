@@ -75,10 +75,9 @@ a {
   padding: 1em;
 }
 
-
-
-.new-question {
-
+.question-time {
+   font-size: 70%;
+   color: #555;
 }
 
 .top-nav-wrapper {

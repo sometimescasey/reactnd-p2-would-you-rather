@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { parseTimestamp } from '../utils/parseTimestamp';
 
 class Question extends Component {
 	render () {
@@ -24,6 +25,10 @@ class Question extends Component {
 							Your answer: {yourAnswer.text}
 							</div>
 							)}
+						<div className="question-time">
+							<br/>
+							Asked { parseTimestamp(question.timestamp) }
+						</div>
 					</div>
 				</Link>
 			</div>

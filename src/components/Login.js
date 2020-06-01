@@ -12,7 +12,10 @@ class Login extends Component {
 	handleLogin = () => {
 		const { dispatch } = this.props;
 		dispatch(setAuthedUser(this.state.selectedUser));
-		this.props.history.push('/');
+		// this.props.history.push('/');
+		/* Disregarding rubric instruction to direct
+		user to home page; see https://knowledge.udacity.com/questions/212999
+		*/
 	};
 
 	handleSelect = (e) => {

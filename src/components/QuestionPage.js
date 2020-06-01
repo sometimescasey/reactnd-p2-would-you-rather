@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import OptionCards from './OptionCards';
 import { handleVote } from '../actions/shared';
+import { parseTimestamp } from '../utils/parseTimestamp';
+import ErrorPage from './ErrorPage';
 
 class QuestionPage extends Component {
 	handleVote = (votedOne) => {
@@ -14,11 +16,13 @@ class QuestionPage extends Component {
 	};
 
 	render () {
-		const { question_id, asker } = this.props;
+		const { question_id, asker, timestamp } = this.props;
 
 
 		/* Won't happen here, but handle the IRL case that someone is logged in (i.e. via cookies)
-		and goes directly to a question page and not through "/":
+		and goes directly to a question page for
+		a question that exists in the backend,
+		and not through "/":
 		do not render until "question" is defined */
 		return (question_id && asker)
 		? (
@@ -31,6 +35,9 @@ class QuestionPage extends Component {
 						<div className="asker-name">
 						Asked by {asker.name}
 						</div>
+						<div className="asked-date">
+						{parseTimestamp(timestamp)}
+						</div>
 					</div>
 
 					<h1>Would you rather...</h1>
@@ -40,7 +47,7 @@ class QuestionPage extends Component {
 						/>
 				</div>
 		)
-		: null;
+		: <ErrorPage/>;
 	}
 }
 
@@ -53,15 +60,20 @@ function mapStateToProps({ questions, users, authedUser }, props) {
 
 	if (hasKeys(questions) && hasKeys(users)) {
 		const question = questions[question_id];
-		const asker = users[question.author];
-		return {
-			question_id,
-			asker,
-			authedUser,
-		};
-	} else {
-		return {};
+		// handle non-existent question
+		if (question) {
+			console.log(question);
+			const asker = users[question.author];
+			return {
+				question_id,
+				asker,
+				authedUser,
+				timestamp: question.timestamp,
+			};
+		}
 	}
+
+	return {};
 }
 
 export default connect(mapStateToProps)(QuestionPage);
