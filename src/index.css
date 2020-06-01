@@ -53,19 +53,22 @@ a {
 }
 
 .question-page-option-list,
-.question-list {
+.question-list,
+.leaderboard-list {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
 .question-page-option-wrapper,
-.question-wrapper {
+.question-wrapper,
+.leaderboard-card-wrapper {
   margin: 10px;
 }
 
 .question-page-option,
-.question {
+.question,
+.leaderboard-card {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 1em;
@@ -103,7 +106,8 @@ a {
 }
 
 .top-avatar-img,
-.asker-img {
+.asker-img,
+.leaderboard-card-img {
   width: 48px;
   border-radius: 50%;
 }
