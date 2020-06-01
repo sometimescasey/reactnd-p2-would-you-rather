@@ -41,6 +41,7 @@ a {
 
 }
 
+.top-logout button,
 .home-switch button {
   font-size: 100%;
   background: none!important;
@@ -87,6 +88,7 @@ a {
   background-color: #AFB5F0;
   margin-bottom: 10px;
   border-bottom: 1px solid #ccc;
+  min-height: 68px;
 }
 
 .top-nav {
@@ -102,6 +104,10 @@ a {
 }
 
 .top-name {
+  margin: 10px;
+}
+
+.top-logout {
   margin: 10px;
 }
 
@@ -123,11 +129,12 @@ a {
 .home-switch li,
 .top-nav li {
 	float: left;
-  	padding: 16px;
+  	padding: 10px;
 }
 
 .home-switch-link,
-.top-link {
+.top-link,
+.top-logout-button {
 	color: black;
 	text-decoration: none;
 }
@@ -137,7 +144,13 @@ a {
 	color: #1F2BA6;
 }
 
-
+.home-switch-link:hover,
+.home-switch-link-active:hover,
+.top-link:hover,
+.top-link-active:hover,
+.top-logout-button:hover {
+  color: red;
+}
 
 .question-user-name {
   color: #1F2BA6;

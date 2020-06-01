@@ -16,9 +16,10 @@ class QuestionPage extends Component {
 	render () {
 		const { question_id, asker } = this.props;
 
-		// handle the odd case that someone is logged in
-		// but goes directly to a question page and not through "/":
-		// do not render until "question" is defined
+
+		/* Won't happen here, but handle the IRL case that someone is logged in (i.e. via cookies)
+		and goes directly to a question page and not through "/":
+		do not render until "question" is defined */
 		return (question_id && asker)
 		? (
 

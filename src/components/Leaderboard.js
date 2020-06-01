@@ -18,7 +18,6 @@ class Leaderboard extends Component {
 
  		return (
  			<div className="leaderboard">
- 				Leaderboard
  				<div className="leaderboard-list">
  					{Object.keys(users)
  						.sort(this.sortByTotal)

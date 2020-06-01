@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
 
-
-// TODO: display a message if no unanswered or answered qs
 class QuestionList extends Component {
 	render () {
 		const { questionIds, showAnswered } = this.props;
 		return (
 			<div className="question-list">
-				{questionIds.map((qid) => (
+				{ (questionIds.length > 0)
+					? (questionIds.map((qid) => (
 					<Question
 						key={qid}
 						qid={qid}
 						showAnswered={showAnswered}
-					/>))}
+					/>)) )
+					: (<div>
+					{ `No ${showAnswered ? "answered" : "unanswered"} questions!` }
+						</div>)
+				}
 			</div>
 			);
 	}

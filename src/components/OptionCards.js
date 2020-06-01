@@ -29,13 +29,10 @@ class OptionCards extends Component {
 			handleVote,
 			totalVoteCount } = this.props;
 
-		console.log("OptionCards this.props: ", this.props);
-
 		if (question && authedUser) {
 			const qo1 = question.optionOne;
 			const qo2 = question.optionTwo;
 			const userAnswered = this.userAnswered(qo1, qo2, authedUser);
-			console.log("userAnswered: ", userAnswered);
 
 			let optionCards = (
 				<div className="question-page-option-list">

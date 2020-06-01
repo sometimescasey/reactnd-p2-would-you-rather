@@ -2,12 +2,11 @@ import React, { Component }from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-// TODO: add name and avatar
 // TODO: add Logout button
 
 class TopNav extends Component {
 	render () {
-		const { users, authedUser } = this.props;
+		const { users, authedUser, logoutHandler } = this.props;
 		const currentUser = (users && authedUser)
 			? users[authedUser]
 			: null;
@@ -35,17 +34,29 @@ class TopNav extends Component {
 					</ul>
 				</nav>
 				</div>
-					<div className="top-userinfo">
+				<div className="top-userinfo">
 					<div className="top-name">
 						{ currentUser && currentUser.name}
 					</div>
+					<div className="top-avatar">
 					{ currentUser &&
 						<img
 						src={currentUser.avatarURL}
 						className="top-avatar-img"
 						alt={`Avatar of ${currentUser.name}`}/> }
 					</div>
+					<div className="top-logout">
+						{ authedUser
+							? ( <button
+								className="top-logout-button"
+								onClick={() => {logoutHandler()}}>
+								Logout
+								</button> )
+							: null }
+					</div>
+				</div>
 			</div>
+
 		);
 	}
 }

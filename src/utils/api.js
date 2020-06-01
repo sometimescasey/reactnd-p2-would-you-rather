@@ -8,8 +8,10 @@ export function getInitialData() {
 		]
 		).then(
 		([users, questions]) => {
-			console.log("users: ", users);
-			console.log("questions: ", questions);
+			console.group("getInitialData()");
+				console.log("users: ", users);
+				console.log("questions: ", questions);
+			console.groupEnd();
 			return ({ users, questions, });
 
 	}

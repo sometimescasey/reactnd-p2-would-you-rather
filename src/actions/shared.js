@@ -2,7 +2,6 @@ import { showLoading, hideLoading } from 'react-redux-loading';
 import { getInitialData } from '../utils/api';
 import { receiveUsers, voteUser, nqUser } from './users';
 import { receiveQuestions, voteQuestion, nqQuestion } from './questions';
-import { setAuthedUser } from './authedUser';
 
 import {
 	_saveQuestionAnswer,
@@ -17,7 +16,6 @@ import {
 // any action creator that returns a function which takes dispatch
 // instead of an Object
 // requires thunk as first middleware to store
-const AUTHED_USER = "sarahedo"; // TODO: allow a dropdown later
 
 export function handleInitialData() {
 	return (dispatch) => {
@@ -26,7 +24,6 @@ export function handleInitialData() {
 		.then(({ users, questions }) => {
 			dispatch(receiveUsers(users));
 			dispatch(receiveQuestions(questions));
-			dispatch(setAuthedUser(AUTHED_USER));
 			dispatch(hideLoading());
 			})
 		.catch();

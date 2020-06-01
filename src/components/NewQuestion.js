@@ -33,7 +33,6 @@ class NewQuestion extends Component {
 
  		return (
  			<div className="new-question">
- 				New Question
  				<h1>Would you rather...</h1>
  				{ /* Note - LastPass noise when hitting Enter:
  				https://github.com/KillerCodeMonkey/ngx-quill/issues/351 */ }

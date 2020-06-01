@@ -2,23 +2,25 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading';
+
 import { handleInitialData } from '../actions/shared';
+import { setAuthedUser } from '../actions/authedUser';
+
 import TopNav from './TopNav';
+import Login from './Login';
 import LoggedInRoutes from './LoggedInRoutes';
 
-// TODO: all these components
-// should be behind a Login screen
-
-// TODO: have routes lead conditionally to components only if
-// user is logged in
-
-// TODO: after login, redirect to Home per rubric
 
 class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(handleInitialData());
   }
+
+  logoutHandler = () => {
+    const { dispatch } =  this.props;
+    dispatch(setAuthedUser(null));
+  };
 
   render() {
     const { authedUser } = this.props;
@@ -28,10 +30,12 @@ class App extends Component {
         <Fragment>
         <LoadingBar />
           <div className="App">
-            <TopNav/>
-            { authedUser && (
-                  <LoggedInRoutes/>
-              )}
+            <TopNav logoutHandler={this.logoutHandler}/>
+            {
+              authedUser
+              ? ( <LoggedInRoutes/> )
+              : ( <Login/> )
+            }
 
           </div>
           </Fragment>
