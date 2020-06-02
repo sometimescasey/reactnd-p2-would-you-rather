@@ -25,3 +25,11 @@ The app allows you to:
 * Click into each question and vote for the option you would prefer ("Would you rather...")
 * Create new questions
 * View a leaderboard of who has answered and asked the most questions
+
+# Purpose
+
+The purpose of the project was to understand the following concepts:
+
+* Managing state by creating a Redux store
+* Connecting the store to Components via `react-redux`'s `{ connect }` and defining `mapStateToProps()`
+* Updating store via actions, and using middleware via `redux-thunk`
