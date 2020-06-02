@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +10,192 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.logged-in-routes {
+  width: 90%;
+  display: inline-block;
+}
+
+.home {
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+
+}
+
+.home-switch {
+
+}
+
+.top-logout button,
+.home-switch button {
+  font-size: 100%;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  cursor: pointer;
+}
+
+.leaderboard {
+}
+
+.question-page-option-list,
+.question-list,
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.question-page-option-wrapper,
+.question-wrapper,
+.leaderboard-card-wrapper {
+  margin: 10px;
+}
+
+.question-page-option,
+.question,
+.leaderboard-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1em;
+}
+
+.question-time {
+   font-size: 70%;
+   color: #555;
+}
+
+.top-nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #AFB5F0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  min-height: 68px;
+}
+
+.top-nav {
+  margin: 10px;
+  float: left;
+}
+
+.top-userinfo {
+  margin: 10px;
+  float: right;
+  display: flex;
+  align-items: center;
+}
+
+.top-name {
+  margin: 10px;
+}
+
+.top-logout {
+  margin: 10px;
+}
+
+.top-avatar-img,
+.asker-img,
+.leaderboard-card-img {
+  width: 48px;
+  border-radius: 50%;
+}
+
+.home-switch ul,
+.top-nav ul {
+	list-style-type: none;
+	  margin: 0;
+	  padding: 0;
+	  overflow: hidden;
+}
+
+.home-switch li,
+.top-nav li {
+	float: left;
+  	padding: 10px;
+}
+
+.home-switch-link,
+.top-link,
+.top-logout-button {
+	color: black;
+	text-decoration: none;
+}
+
+.home-switch-link-active,
+.top-link-active {
+	color: #1F2BA6;
+}
+
+.home-switch-link:hover,
+.home-switch-link-active:hover,
+.top-link:hover,
+.top-link-active:hover,
+.top-logout-button:hover {
+  color: red;
+}
+
+.question-user-name {
+  color: #1F2BA6;
+  font-weight: bold;
+}
+
+.your-answer {
+  font-weight: bold;
+}
+
+/* QUESTION PAGE */
+
+.asker-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.asker-name {
+  margin-top: 10px;
+}
+
+/* New question */
+
+.new-question {
+  align-items: center;
+}
+
+.new-question-form {
+
+}
+
+.new-question-option-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.new-question-button,
+.new-question-option {
+  border: 1px solid #ccc;
+  border-radius: 10em;
+  font-size: 100%;
+  margin: 10px;
+  padding: 10px;
 }
